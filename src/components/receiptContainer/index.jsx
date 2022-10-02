@@ -23,7 +23,7 @@ const ReceiptContainer = () => {
     ) {
       setIsEmpty(false);
     }
-  });
+  }, [tomorrow, fifteenDays, thirtyDays, ninetyDays]);
   const tryAgainRequest = () => {
     calculateAnticipation();
   };
@@ -38,15 +38,15 @@ const ReceiptContainer = () => {
             width={80}
           />
         </div>
-      ) : isEmpty ? (
-        <h1 className="emptyText">
-          Preencha o formulário e calcule os recebimentos da sua antecipação
-        </h1>
       ) : requestError ? (
         <div className="error">
           <p>Ops algo deu errado!</p>
           <button onClick={() => tryAgainRequest()}>Tente novamente</button>
         </div>
+      ) : isEmpty ? (
+        <h1 className="emptyText">
+          Preencha o formulário e calcule os recebimentos da sua antecipação
+        </h1>
       ) : (
         <ul>
           <h2>VOCÊ RECEBERÁ:</h2>
